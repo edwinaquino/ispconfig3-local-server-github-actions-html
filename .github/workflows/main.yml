@@ -16,11 +16,12 @@ jobs:
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
+          username: ${{ secrets.ISPCONFIG_USER }}
+          password: ${{ secrets.ISPCONFIG_USER_PASS }}
           port: ${{ secrets.PORT }} # Optional, defaults to 22
           script: |
-            cd /var/www/html
-            git pull origin main
+            cd web/
+            echo "added from github actions with main.yml" > index.html
+            # git pull origin main
             # Add any other deployment commands here, e.g., build, restart service
             echo "Deployment complete!"
